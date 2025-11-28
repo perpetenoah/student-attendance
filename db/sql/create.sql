@@ -138,16 +138,16 @@ CREATE TABLE students
 
 CREATE TABLE sessions
 (
-    id           BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    aa_id        BIGINT UNSIGNED NOT NULL,
-    title        VARCHAR(255),
-    teacher_id   BIGINT UNSIGNED NOT NULL,
-    starts_at    DATETIME        NOT NULL,
-    ends_at      DATETIME        NULL,
-    classroom_id BIGINT UNSIGNED NOT NULL,
-    created_at   TIMESTAMP       NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at   TIMESTAMP       NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    deleted_at   TIMESTAMP       NULL DEFAULT NULL,
+    id             BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    aa_id          BIGINT UNSIGNED NOT NULL,
+    title          VARCHAR(255),
+    teacher_id     BIGINT UNSIGNED NOT NULL,
+    starts_at      DATETIME        NOT NULL,
+    ends_at        DATETIME        NULL,
+    classroom_id   BIGINT UNSIGNED NOT NULL,
+    created_at     TIMESTAMP       NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at     TIMESTAMP       NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at     TIMESTAMP       NULL DEFAULT NULL,
 
     UNIQUE (aa_id, classroom_id, starts_at),
 

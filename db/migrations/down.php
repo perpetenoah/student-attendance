@@ -1,10 +1,12 @@
 <?php
-require_once '../connexion.php';
+
+include __DIR__ . '/../connexion.php';
 
 function down(): void
 {
+    global $pdo;
+
     try {
-        global $pdo;
         $stm = <<<sql
 DROP TABLE IF EXISTS attendances;
 DROP TABLE IF EXISTS student_group;
@@ -19,11 +21,11 @@ DROP TABLE IF EXISTS students;
 DROP TABLE IF EXISTS teachers;
 DROP TABLE IF EXISTS school_years;
 sql;
-
         $pdo->exec($stm);
-    } catch (PDOException $exception) {
-        echo $exception->getMessage();
+        echo 'Drop all table -> done';
+    } catch (PDOException $e) {
+        echo $e->getMessage();
     }
 }
 
-run();
+down();

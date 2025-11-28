@@ -3,8 +3,7 @@ $host = '127.0.0.1';
 $db_name = 'school_hepl';
 $user = 'root';
 $pass = '';
-$charset = 'utf8mb4';
-
+$charset = 'utf8mb4'; 
 $dsn = "mysql:host=$host;dbname=$db_name;charset=$charset";
 
 $options = [
@@ -17,6 +16,5 @@ $options = [
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (PDOException $e) {
-    // TODO
     echo 'Erreur de connexion : ' . $e->getMessage();
 }

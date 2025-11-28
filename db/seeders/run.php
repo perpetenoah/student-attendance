@@ -1,10 +1,12 @@
 <?php
-require_once '../connexion.php';
+
+include __DIR__ . '/../connexion.php';
 
 function run(): void
 {
+    global $pdo;
+
     try {
-        global $pdo;
         $stm = <<<sql
 INSERT INTO school_years (name, starts_at, ends_at, is_current_year)
 VALUES ('2025-2026', '2025-09-15', '2026-06-30', TRUE);
@@ -276,78 +278,78 @@ VALUES (8, 'Séance 1', (SELECT id FROM teachers WHERE last_name LIKE 'schreurs'
 
 
 INSERT INTO session_group (session_id, group_id)
-VALUES (1, (select id from `groups` where code like '%w201%')),
-       (2, (select id from `groups` where code like '%w202%')),
-       (3, (select id from `groups` where code like '%w201%')),
-       (4, (select id from `groups` where code like '%w202%')),
+VALUES (1, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (2, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (3, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (4, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (5, (select id from `groups` where code like '%w201%')),
-       (6, (select id from `groups` where code like '%w202%')),
-       (7, (select id from `groups` where code like '%w201%')),
-       (8, (select id from `groups` where code like '%w202%')),
+       (5, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (6, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (7, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (8, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (9, (select id from `groups` where code like '%w201%')),
-       (10, (select id from `groups` where code like '%w202%')),
-       (11, (select id from `groups` where code like '%w201%')),
-       (12, (select id from `groups` where code like '%w202%')),
+       (9, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (10, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (11, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (12, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (13, (select id from `groups` where code like '%w201%')),
-       (14, (select id from `groups` where code like '%w202%')),
-       (15, (select id from `groups` where code like '%w201%')),
-       (16, (select id from `groups` where code like '%w202%')),
+       (13, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (14, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (15, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (16, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (17, (select id from `groups` where code like '%w201%')),
-       (18, (select id from `groups` where code like '%w202%')),
-       (19, (select id from `groups` where code like '%w201%')),
-       (20, (select id from `groups` where code like '%w202%')),
+       (17, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (18, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (19, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (20, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (20, (select id from `groups` where code like '%w201%')),
-       (21, (select id from `groups` where code like '%w202%')),
-       (22, (select id from `groups` where code like '%w201%')),
-       (23, (select id from `groups` where code like '%w202%')),
+       (20, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (21, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (22, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (23, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (24, (select id from `groups` where code like '%w201%')),
-       (25, (select id from `groups` where code like '%w202%')),
-       (26, (select id from `groups` where code like '%w201%')),
-       (27, (select id from `groups` where code like '%w202%')),
+       (24, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (25, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (26, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (27, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (28, (select id from `groups` where code like '%w201%')),
-       (29, (select id from `groups` where code like '%w202%')),
-       (30, (select id from `groups` where code like '%w201%')),
-       (31, (select id from `groups` where code like '%w202%')),
+       (28, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (29, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (30, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (31, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (32, (select id from `groups` where code like '%w201%')),
-       (33, (select id from `groups` where code like '%w202%')),
-       (34, (select id from `groups` where code like '%w201%')),
-       (35, (select id from `groups` where code like '%w202%')),
+       (32, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (33, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (34, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (35, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (36, (select id from `groups` where code like '%w201%')),
-       (37, (select id from `groups` where code like '%w202%')),
-       (38, (select id from `groups` where code like '%w201%')),
-       (39, (select id from `groups` where code like '%w202%')),
+       (36, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (37, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (38, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (39, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (40, (select id from `groups` where code like '%w201%')),
-       (41, (select id from `groups` where code like '%w202%')),
-       (42, (select id from `groups` where code like '%w201%')),
-       (43, (select id from `groups` where code like '%w202%')),
+       (40, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (41, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (42, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (43, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (44, (select id from `groups` where code like '%w201%')),
-       (45, (select id from `groups` where code like '%w202%')),
-       (46, (select id from `groups` where code like '%w201%')),
-       (47, (select id from `groups` where code like '%w202%')),
+       (44, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (45, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (46, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (47, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (48, (select id from `groups` where code like '%w201%')),
-       (49, (select id from `groups` where code like '%w202%')),
-       (50, (select id from `groups` where code like '%w201%')),
-       (51, (select id from `groups` where code like '%w202%'));
+       (48, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (49, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (50, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (51, (SELECT id FROM `groups` WHERE code LIKE '%w202%'));
 
 COMMIT;
 
 sql;
-
         $pdo->exec($stm);
-    } catch (PDOException $exception) {
-        echo $exception->getMessage();
+        echo 'Insert all data';
+    } catch (PDOException $e) {
+        echo $e->getMessage();
     }
 }
 
