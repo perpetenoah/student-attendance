@@ -3,7 +3,7 @@ VALUES ('2025-2026', '2025-09-15', '2026-06-30', TRUE);
 
 
 INSERT INTO teachers (first_name, last_name, email)
-VALUES ('Maud', 'Wera', 'maude.wera@hepl.be'),
+VALUES ('Maude', 'Wera', 'maude.wera@hepl.be'),
        ('Nathalie', 'Nicolay', 'nathalie.nicolay@hepl.be'),
        ('Carine', 'Geradon', 'carine.geradon@hepl.be'),
        ('Veronique', 'Etienne', 'veronique.etienne@hepl.be'),
@@ -29,22 +29,24 @@ VALUES ('Maud', 'Wera', 'maude.wera@hepl.be'),
        ('Francois', 'Parmentier', 'francois.parmentier@hepl.be');
 
 
-INSERT INTO ues (school_year_id, code, title, description, credits, responsible_teacher_id)
-VALUES (1, 'UE201', '(W) Design Web', '', 14, (SELECT id FROM teachers WHERE last_name LIKE 'dupont')),
-       (1, 'UE202', '(W) Design d''applications mobiles', '', 2,
+INSERT INTO ues (school_year_id, grade, code, title, description, credits, responsible_teacher_id)
+VALUES (1, 'B2', 'UE201', '(W) Design Web', '', 14, (SELECT id FROM teachers WHERE last_name LIKE 'dupont')),
+       (1, 'B2', 'UE202', '(W) Design d''applications mobiles', '', 2,
         (SELECT id FROM teachers WHERE last_name LIKE 'Parmentier')),
-       (1, 'UE203', '(W) Développement côté client', '', 6, (SELECT id FROM teachers WHERE last_name LIKE 'schreurs')),
-       (1, 'UE204', '(W) Développement côté serveur', '', 6, (SELECT id FROM teachers WHERE last_name LIKE 'vilain')),
-       (1, 'UE205', '(W) Multimédia', '', 6, (SELECT id FROM teachers WHERE last_name LIKE 'schreurs')),
-       (1, 'UE206', '(W) Systèmes de gestion de contenu', '', 4,
+       (1, 'B2', 'UE203', '(W) Développement côté client', '', 6,
         (SELECT id FROM teachers WHERE last_name LIKE 'schreurs')),
-       (1, 'UE207', 'Anglais  - 3', '', 2, (SELECT id FROM teachers WHERE last_name LIKE 'nicolay')),
-       (1, 'UE208', 'Anglais  - 4', '', 2, (SELECT id FROM teachers WHERE last_name LIKE 'nicolay')),
-       (1, 'UE209', 'Communication', '', 3, (SELECT id FROM teachers WHERE last_name LIKE 'spirlet')),
-       (1, 'UE2010', 'Culture artistique - 2', '', 2, (SELECT id FROM teachers WHERE last_name LIKE 'spirlet')),
-       (1, 'UE2011', 'Entreprise', '', 2, (SELECT id FROM teachers WHERE last_name LIKE 'etienne')),
-       (1, 'UE2012', 'Graphisme - 3', '', 4, (SELECT id FROM teachers WHERE last_name LIKE 'lussardi')),
-       (1, 'UE2013', 'Graphisme - 4', '', 4, (SELECT id FROM teachers WHERE last_name LIKE 'lussardi'));
+       (1, 'B2', 'UE204', '(W) Développement côté serveur', '', 6,
+        (SELECT id FROM teachers WHERE last_name LIKE 'vilain')),
+       (1, 'B2', 'UE205', '(W) Multimédia', '', 6, (SELECT id FROM teachers WHERE last_name LIKE 'schreurs')),
+       (1, 'B2', 'UE206', '(W) Systèmes de gestion de contenu', '', 4,
+        (SELECT id FROM teachers WHERE last_name LIKE 'schreurs')),
+       (1, 'B2', 'UE207', 'Anglais  - 3', '', 2, (SELECT id FROM teachers WHERE last_name LIKE 'nicolay')),
+       (1, 'B2', 'UE208', 'Anglais  - 4', '', 2, (SELECT id FROM teachers WHERE last_name LIKE 'nicolay')),
+       (1, 'B2', 'UE209', 'Communication', '', 3, (SELECT id FROM teachers WHERE last_name LIKE 'spirlet')),
+       (1, 'B2', 'UE2010', 'Culture artistique - 2', '', 2, (SELECT id FROM teachers WHERE last_name LIKE 'spirlet')),
+       (1, 'B2', 'UE2011', 'Entreprise', '', 2, (SELECT id FROM teachers WHERE last_name LIKE 'etienne')),
+       (1, 'B2', 'UE2012', 'Graphisme - 3', '', 4, (SELECT id FROM teachers WHERE last_name LIKE 'lussardi')),
+       (1, 'B2', 'UE2013', 'Graphisme - 4', '', 4, (SELECT id FROM teachers WHERE last_name LIKE 'lussardi'));
 
 
 INSERT INTO aas (school_year_id, ue_id, code, title, quadrimester, hours_per_year)
@@ -146,6 +148,23 @@ VALUES ('7340109162', 'Baaroun', 'Alyssa', 'alyssa.baaroun@student.hepl.be'),
        ('7340111263', 'Perpète', 'Noah', 'noah.perpete@student.hepl.be'),
        ('7340135849', 'Rabhioui', 'Assia', 'assia.rabhioui@student.hepl.be'),
        ('7340106269', 'Schmitz', 'Eline', 'eline.schmitz@student.hepl.be');
+
+INSERT INTO student_group(group_id, student_id)
+VALUES ((SELECT id FROM `groups` WHERE code LIKE '%202%'), (SELECT id FROM students WHERE first_name LIKE 'Alyssa')),
+       ((SELECT id FROM `groups` WHERE code LIKE '%202%'), (SELECT id FROM students WHERE first_name LIKE 'Chiara')),
+       ((SELECT id FROM `groups` WHERE code LIKE '%202%'), (SELECT id FROM students WHERE first_name LIKE 'Isabella')),
+       ((SELECT id FROM `groups` WHERE code LIKE '%202%'), (SELECT id FROM students WHERE first_name LIKE 'Amina')),
+       ((SELECT id FROM `groups` WHERE code LIKE '%202%'), (SELECT id FROM students WHERE first_name LIKE 'Jennifer')),
+       ((SELECT id FROM `groups` WHERE code LIKE '%202%'), (SELECT id FROM students WHERE first_name LIKE 'Wassila')),
+       ((SELECT id FROM `groups` WHERE code LIKE '%202%'), (SELECT id FROM students WHERE first_name LIKE 'Assia')),
+
+       ((SELECT id FROM `groups` WHERE code LIKE '%201%'), (SELECT id FROM students WHERE first_name LIKE 'Noah')),
+       ((SELECT id FROM `groups` WHERE code LIKE '%201%'), (SELECT id FROM students WHERE first_name LIKE 'Edyta')),
+       ((SELECT id FROM `groups` WHERE code LIKE '%201%'), (SELECT id FROM students WHERE first_name LIKE 'Eliott')),
+       ((SELECT id FROM `groups` WHERE code LIKE '%201%'), (SELECT id FROM students WHERE first_name LIKE 'Laurine')),
+       ((SELECT id FROM `groups` WHERE code LIKE '%201%'), (SELECT id FROM students WHERE first_name LIKE 'Marie')),
+       ((SELECT id FROM `groups` WHERE code LIKE '%201%'), (SELECT id FROM students WHERE first_name LIKE 'Laura'))
+;
 
 
 INSERT INTO sessions (aa_id, title, teacher_id, starts_at, ends_at, classroom_id)
@@ -268,70 +287,75 @@ VALUES (8, 'Séance 1', (SELECT id FROM teachers WHERE last_name LIKE 'schreurs'
 
 
 INSERT INTO session_group (session_id, group_id)
-VALUES (1, (select id from `groups` where code like '%w201%')),
-       (2, (select id from `groups` where code like '%w202%')),
-       (3, (select id from `groups` where code like '%w201%')),
-       (4, (select id from `groups` where code like '%w202%')),
+VALUES (1, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (2, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (3, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (4, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (5, (select id from `groups` where code like '%w201%')),
-       (6, (select id from `groups` where code like '%w202%')),
-       (7, (select id from `groups` where code like '%w201%')),
-       (8, (select id from `groups` where code like '%w202%')),
+       (5, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (6, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (7, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (8, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (9, (select id from `groups` where code like '%w201%')),
-       (10, (select id from `groups` where code like '%w202%')),
-       (11, (select id from `groups` where code like '%w201%')),
-       (12, (select id from `groups` where code like '%w202%')),
+       (9, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (10, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (11, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (12, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (13, (select id from `groups` where code like '%w201%')),
-       (14, (select id from `groups` where code like '%w202%')),
-       (15, (select id from `groups` where code like '%w201%')),
-       (16, (select id from `groups` where code like '%w202%')),
+       (13, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (14, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (15, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (16, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (17, (select id from `groups` where code like '%w201%')),
-       (18, (select id from `groups` where code like '%w202%')),
-       (19, (select id from `groups` where code like '%w201%')),
-       (20, (select id from `groups` where code like '%w202%')),
+       (17, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (18, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (19, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (20, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (20, (select id from `groups` where code like '%w201%')),
-       (21, (select id from `groups` where code like '%w202%')),
-       (22, (select id from `groups` where code like '%w201%')),
-       (23, (select id from `groups` where code like '%w202%')),
+       (20, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (21, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (22, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (23, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (24, (select id from `groups` where code like '%w201%')),
-       (25, (select id from `groups` where code like '%w202%')),
-       (26, (select id from `groups` where code like '%w201%')),
-       (27, (select id from `groups` where code like '%w202%')),
+       (24, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (25, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (26, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (27, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (28, (select id from `groups` where code like '%w201%')),
-       (29, (select id from `groups` where code like '%w202%')),
-       (30, (select id from `groups` where code like '%w201%')),
-       (31, (select id from `groups` where code like '%w202%')),
+       (28, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (29, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (30, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (31, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (32, (select id from `groups` where code like '%w201%')),
-       (33, (select id from `groups` where code like '%w202%')),
-       (34, (select id from `groups` where code like '%w201%')),
-       (35, (select id from `groups` where code like '%w202%')),
+       (32, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (33, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (34, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (35, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (36, (select id from `groups` where code like '%w201%')),
-       (37, (select id from `groups` where code like '%w202%')),
-       (38, (select id from `groups` where code like '%w201%')),
-       (39, (select id from `groups` where code like '%w202%')),
+       (36, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (37, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (38, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (39, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (40, (select id from `groups` where code like '%w201%')),
-       (41, (select id from `groups` where code like '%w202%')),
-       (42, (select id from `groups` where code like '%w201%')),
-       (43, (select id from `groups` where code like '%w202%')),
+       (40, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (41, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (42, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (43, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (44, (select id from `groups` where code like '%w201%')),
-       (45, (select id from `groups` where code like '%w202%')),
-       (46, (select id from `groups` where code like '%w201%')),
-       (47, (select id from `groups` where code like '%w202%')),
+       (44, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (45, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (46, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (47, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
 
-       (48, (select id from `groups` where code like '%w201%')),
-       (49, (select id from `groups` where code like '%w202%')),
-       (50, (select id from `groups` where code like '%w201%')),
-       (51, (select id from `groups` where code like '%w202%'));
+       (48, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (49, (SELECT id FROM `groups` WHERE code LIKE '%w202%')),
+       (50, (SELECT id FROM `groups` WHERE code LIKE '%w201%')),
+       (51, (SELECT id FROM `groups` WHERE code LIKE '%w202%'));
+
+INSERT INTO school_info (phone, curren_school_year_Id)
+VALUES (' +32 (0)4 279 75 00', 1);
 
 COMMIT;
 
+
+;

@@ -3,14 +3,20 @@
 <?php global $title ?>
 <main class="page-main">
     <h1><?php echo $title ?></h1>
-    <ol>
-        <?php foreach (getAllStudents() as $student): ?>
-            <li>
-                <?php echo $student['first_name'] ?>
-                &nbsp;<?php echo $student['last_name'] ?>
-            </li>
-        <?php endforeach; ?>
-    </ol>
+    <?php $students = getAllStudents(); ?>
+
+    <?php if (count($students) > 0): ?>
+        <ol>
+            <?php foreach (getAllStudents() as $student): ?>
+                <li>
+                    <?php echo $student['first_name'] ?>
+                    &nbsp;<?php echo $student['last_name'] ?>
+                </li>
+            <?php endforeach; ?>
+        </ol>
+    <?php else: ?>
+        <p>Mais où sont-ils&nbsp;?</p>
+    <?php endif; ?>
 
 </main>
 

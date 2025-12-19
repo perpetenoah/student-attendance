@@ -4,6 +4,7 @@ include 'db/queries.php';
 
 $title = '';
 
+
 switch ($_SERVER['REQUEST_URI']) {
     case '':
     case '/':

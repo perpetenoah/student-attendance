@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS school_info;
 DROP TABLE IF EXISTS attendances;
 DROP TABLE IF EXISTS student_group;
 DROP TABLE IF EXISTS session_group;
@@ -10,6 +11,7 @@ DROP TABLE IF EXISTS ues;
 DROP TABLE IF EXISTS students;
 DROP TABLE IF EXISTS teachers;
 DROP TABLE IF EXISTS school_years;
+
 
 
 CREATE TABLE school_years
@@ -39,15 +41,16 @@ CREATE TABLE teachers
 CREATE TABLE ues
 (
     id                     BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    code                   VARCHAR(50)      NOT NULL,
-    school_year_id         BIGINT UNSIGNED  NOT NULL,
-    credits                TINYINT UNSIGNED NOT NULL CHECK (credits <= 60),
-    title                  VARCHAR(255)     NOT NULL,
-    description            TEXT             NULL,
-    responsible_teacher_id BIGINT UNSIGNED  NOT NULL,
-    created_at             TIMESTAMP        NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at             TIMESTAMP        NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    deleted_at             TIMESTAMP        NULL DEFAULT NULL,
+    code                   VARCHAR(50)             NOT NULL,
+    school_year_id         BIGINT UNSIGNED         NOT NULL,
+    credits                TINYINT UNSIGNED        NOT NULL CHECK (credits <= 60),
+    grade                  enum ('B1', 'B2', 'B3') NOT NULL,
+    title                  VARCHAR(255)            NOT NULL,
+    description            TEXT                    NULL,
+    responsible_teacher_id BIGINT UNSIGNED         NOT NULL,
+    created_at             TIMESTAMP               NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at             TIMESTAMP               NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at             TIMESTAMP               NULL DEFAULT NULL,
 
     UNIQUE (code, school_year_id),
 
@@ -138,16 +141,16 @@ CREATE TABLE students
 
 CREATE TABLE sessions
 (
-    id             BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    aa_id          BIGINT UNSIGNED NOT NULL,
-    title          VARCHAR(255),
-    teacher_id     BIGINT UNSIGNED NOT NULL,
-    starts_at      DATETIME        NOT NULL,
-    ends_at        DATETIME        NULL,
-    classroom_id   BIGINT UNSIGNED NOT NULL,
-    created_at     TIMESTAMP       NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at     TIMESTAMP       NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    deleted_at     TIMESTAMP       NULL DEFAULT NULL,
+    id           BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    aa_id        BIGINT UNSIGNED NOT NULL,
+    title        VARCHAR(255),
+    teacher_id   BIGINT UNSIGNED NOT NULL,
+    starts_at    DATETIME        NOT NULL,
+    ends_at      DATETIME        NULL,
+    classroom_id BIGINT UNSIGNED NOT NULL,
+    created_at   TIMESTAMP       NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at   TIMESTAMP       NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at   TIMESTAMP       NULL DEFAULT NULL,
 
     UNIQUE (aa_id, classroom_id, starts_at),
 
@@ -218,4 +221,13 @@ CREATE TABLE attendances
 
     FOREIGN KEY (student_id) REFERENCES students (id)
         ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+CREATE TABLE school_info
+(
+    id                    BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    phone                 VARCHAR(30),
+    curren_school_year_id BIGINT UNSIGNED,
+    FOREIGN KEY (curren_school_year_id) REFERENCES school_years (id)
 );
