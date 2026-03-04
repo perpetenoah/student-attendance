@@ -1,0 +1,21 @@
+{
+  "name": "dominique/student-attendance",
+  "description": "A small app for managing the attendances of students",
+  "type": "project",
+  "require": {
+    "php": "^8.5",
+    "vlucas/phpdotenv": "^5.6",
+    "ext-pdo": "*"
+  },
+  "autoload": {
+    "files": [
+      "toby/helpers/functions.php"
+    ]
+  },
+  "authors": [
+    {
+      "name": "Dominique Vilain",
+      "email": "dominiquevilain@users.noreply.github.com"
+    }
+  ]
+}
